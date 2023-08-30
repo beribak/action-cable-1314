@@ -1,0 +1,17 @@
+<div class="container" data-controller="chatroom-subscription">
+  <h3><%= @chatroom.name %></h3>
+
+  <div class="messages-list" data-chatroom="<%= @chatroom.id %>" data-chatroom-subscription-target="messagesList">
+    <% @chatroom.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= simple_form_for [@chatroom, @message] do |f|%>
+      <%= f.input :content %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+
